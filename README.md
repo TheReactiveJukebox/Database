@@ -18,6 +18,6 @@ Wenn man den Containers z.B. mit `dokcer run -p 5432:5432 $ID` startet, kann man
 Wir starten einen weiteren Dockercontainer den wir mit dem DBMS-Container verbinden und so zwischen den Containern eine Verbindung zur Datenbank herstellen.
 
 1. Container ID des DBMS Containers mit `docker ps` nachschlagen
-2. wir starten einen neuen Dockercontainer mit `docker run -it --rm --link $ID:db postgres:alpin psql -h db -U backend -W reactivejukebox`. Dabei vergeben wir den DBMS Container den Alias *DB* unter diesem Hostname kann der DBMS Container aus dem neuen Container aus erreicht werden. Das Abgefragte Passwort ist wie oben beschrieben *backend*.
+2. wir starten einen neuen Dockercontainer mit `docker run -it --rm --link $ID:db postgres:alpine psql -h db -U backend -W reactivejukebox`. Dabei vergeben wir den DBMS Container den Alias *DB* unter diesem Hostname kann der DBMS Container aus dem neuen Container aus erreicht werden. Das Abgefragte Passwort ist wie oben beschrieben *backend*.
 
 Wir erhalten eine psql Prompt, die mit der Datenbank reactivejukebox verbunden ist. Jetzt können wir Abfragen an das DBMS senden z.B. `SELECT * FROM users;`.
