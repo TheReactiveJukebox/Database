@@ -5,4 +5,4 @@ CREATE USER backend WITH NOSUPERUSER NOCREATEDB NOCREATEROLE PASSWORD 'xxx';
 \connect reactivejukebox
 
 --- give user backend access for select, update and insert operations on table users
-GRANT SELECT, UPDATE, INSERT ON TABLE users TO backend;
+GRANT ALL PRIVILEGES ON users TO backend;
