@@ -9,6 +9,14 @@ Um sich mit der Datenbank reactivejukebox zu verbinden, steht das Benutzerkonto 
 1. Erzeuge Container image mit `docker build .`
 2. Starte Container mit `docker run $ID`
 
+## starte Dockercontainer mit Datenbank im lokalen Verzeichnis (Persistent)
+1. Erzeuge Container image mit `docker build .`
+2. Starte Container mit `docker run -v $(pwd)/data:/var/lib/postgresql/data $ID`
+Dabei wird durch den Parameter -v getrennt durch einen : (Doppelpunkt) Hostdir und Containerdir angegeben.
+Das Hostdir ist das Verzeichnis auf dem System, das in den Container eingebunden werden soll und das Containerdir der entsprechende Mountpoint im Container ist.
+Dabei müssen jeweils **absolute Pfade** angegeben werden.
+Das Hostdir muss nicht extra angelegt werden.
+
 ## vom Hostsystem mit dem DBMS verbinden
 Um sich vom Hostsystem aus mit dem DBMS im Cotainer zu verbinden muss der Container mit dem zusätzlichen `-p` Parameter gestartet werden.
 Dieser Parameter weist Docker an den Port 5432, auf dem PostgreSQL im Container auf eingehende Verbindungen wartet, auch auf einem Port vom Hostsystem zu lauschen.
