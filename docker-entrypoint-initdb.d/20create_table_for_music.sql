@@ -34,6 +34,7 @@ CREATE TABLE song (
 CREATE TABLE song_artist (
     idSong INTEGER REFERENCES song (idSong) NOT NULL,
     idArtist INTEGER REFERENCES artist (idArtist) NOT NULL,
+    boolFeatured boolean DEFAULT FALSE NOT NULL,
     UNIQUE (idSong, idArtist)
 );
 
