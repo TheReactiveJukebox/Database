@@ -10,7 +10,7 @@ CREATE TABLE artist (
 --- create table album
 CREATE TABLE album (
     idAlbum serial PRIMARY KEY,
-    strAlbum varchar(256) NOT NULL
+    strAlbum varchar(256) NOT NULL UNIQUE
 );
 
 --- create table album_artist as cross reference between artist and album
