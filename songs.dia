@@ -1102,12 +1102,12 @@
         <dia:point val="7.35,13.4"/>
       </dia:attribute>
       <dia:attribute name="obj_bb">
-        <dia:rectangle val="7.35,12.805;8.3775,13.55"/>
+        <dia:rectangle val="7.35,12.7864;8.88363,13.5872"/>
       </dia:attribute>
       <dia:attribute name="text">
         <dia:composite type="text">
           <dia:attribute name="string">
-            <dia:string>#1:n#</dia:string>
+            <dia:string>#(0,n)#</dia:string>
           </dia:attribute>
           <dia:attribute name="font">
             <dia:font family="sans" style="0" name="Helvetica"/>
@@ -1132,15 +1132,15 @@
     </dia:object>
     <dia:object type="Standard - Text" version="1" id="O29">
       <dia:attribute name="obj_pos">
-        <dia:point val="12.75,2.85"/>
+        <dia:point val="12.4,2.85"/>
       </dia:attribute>
       <dia:attribute name="obj_bb">
-        <dia:rectangle val="12.75,2.255;13.995,3"/>
+        <dia:rectangle val="12.4,2.23637;14.1511,3.03725"/>
       </dia:attribute>
       <dia:attribute name="text">
         <dia:composite type="text">
           <dia:attribute name="string">
-            <dia:string>#0:m#</dia:string>
+            <dia:string>#(1,m)#</dia:string>
           </dia:attribute>
           <dia:attribute name="font">
             <dia:font family="sans" style="0" name="Helvetica"/>
@@ -1149,7 +1149,7 @@
             <dia:real val="0.80000000000000004"/>
           </dia:attribute>
           <dia:attribute name="pos">
-            <dia:point val="12.75,2.85"/>
+            <dia:point val="12.4,2.85"/>
           </dia:attribute>
           <dia:attribute name="color">
             <dia:color val="#000000"/>
@@ -1168,12 +1168,12 @@
         <dia:point val="18.35,2.85"/>
       </dia:attribute>
       <dia:attribute name="obj_bb">
-        <dia:rectangle val="18.35,2.255;19.38,3"/>
+        <dia:rectangle val="18.35,2.23637;19.8836,3.03725"/>
       </dia:attribute>
       <dia:attribute name="text">
         <dia:composite type="text">
           <dia:attribute name="string">
-            <dia:string>#0:1#</dia:string>
+            <dia:string>#(1,n)#</dia:string>
           </dia:attribute>
           <dia:attribute name="font">
             <dia:font family="sans" style="0" name="Helvetica"/>
@@ -1201,12 +1201,12 @@
         <dia:point val="9.5,14.2"/>
       </dia:attribute>
       <dia:attribute name="obj_bb">
-        <dia:rectangle val="9.5,13.605;10.5275,14.35"/>
+        <dia:rectangle val="9.5,13.5864;11.0336,14.3872"/>
       </dia:attribute>
       <dia:attribute name="text">
         <dia:composite type="text">
           <dia:attribute name="string">
-            <dia:string>#0:n#</dia:string>
+            <dia:string>#(1,n)#</dia:string>
           </dia:attribute>
           <dia:attribute name="font">
             <dia:font family="sans" style="0" name="Helvetica"/>
@@ -1231,15 +1231,15 @@
     </dia:object>
     <dia:object type="Standard - Text" version="1" id="O32">
       <dia:attribute name="obj_pos">
-        <dia:point val="26.2,14.2"/>
+        <dia:point val="26.1,14.2"/>
       </dia:attribute>
       <dia:attribute name="obj_bb">
-        <dia:rectangle val="26.2,13.605;27.445,14.35"/>
+        <dia:rectangle val="26.1,13.5864;27.8511,14.3872"/>
       </dia:attribute>
       <dia:attribute name="text">
         <dia:composite type="text">
           <dia:attribute name="string">
-            <dia:string>#1:m#</dia:string>
+            <dia:string>#(0,m)#</dia:string>
           </dia:attribute>
           <dia:attribute name="font">
             <dia:font family="sans" style="0" name="Helvetica"/>
@@ -1248,7 +1248,7 @@
             <dia:real val="0.80000000000000004"/>
           </dia:attribute>
           <dia:attribute name="pos">
-            <dia:point val="26.2,14.2"/>
+            <dia:point val="26.1,14.2"/>
           </dia:attribute>
           <dia:attribute name="color">
             <dia:color val="#000000"/>
@@ -1267,12 +1267,12 @@
         <dia:point val="30.4,13.35"/>
       </dia:attribute>
       <dia:attribute name="obj_bb">
-        <dia:rectangle val="30.4,12.755;31.4275,13.5"/>
+        <dia:rectangle val="30.4,12.7364;31.9361,13.5372"/>
       </dia:attribute>
       <dia:attribute name="text">
         <dia:composite type="text">
           <dia:attribute name="string">
-            <dia:string>#1:n#</dia:string>
+            <dia:string>#(0,1)#</dia:string>
           </dia:attribute>
           <dia:attribute name="font">
             <dia:font family="sans" style="0" name="Helvetica"/>
@@ -1468,7 +1468,7 @@
         <dia:point val="5.15,15.65"/>
       </dia:attribute>
       <dia:attribute name="obj_bb">
-        <dia:rectangle val="5.1,15.6;6.77,23.05"/>
+        <dia:rectangle val="5.1,15.6;6.79071,23.05"/>
       </dia:attribute>
       <dia:attribute name="orth_points">
         <dia:point val="5.15,15.65"/>
@@ -1497,7 +1497,7 @@
         <dia:point val="29.17,23.2"/>
       </dia:attribute>
       <dia:attribute name="obj_bb">
-        <dia:rectangle val="28.1,15.6;29.22,23.25"/>
+        <dia:rectangle val="28.1,15.5793;29.22,23.25"/>
       </dia:attribute>
       <dia:attribute name="orth_points">
         <dia:point val="29.17,23.2"/>
