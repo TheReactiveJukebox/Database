@@ -5,14 +5,16 @@
 CREATE TABLE artist (
     idArtist serial PRIMARY KEY,
     strArtistNormalized varchar(256) NOT NULL UNIQUE,
-    strArtist text NOT NULL
+    strArtist text NOT NULL,
+    CONSTRAINT non_empty CHECK (length(strArtistNormalized) > 0 and length(strArtist) > 0)
 );
 
 --- create table album
 CREATE TABLE album (
     idAlbum serial PRIMARY KEY,
     strAlbumNormalized varchar(256) NOT NULL UNIQUE,
-    strAlbum text NOT NULL
+    strAlbum text NOT NULL,
+    CONSTRAINT non_empty CHECK (length(strAlbumNormalized) > 0 and length(strAlbum) > 0)
 );
 
 --- create table album_artist as cross reference between artist and album
@@ -30,6 +32,7 @@ CREATE TABLE song (
     strTitle text NOT NULL,
     idAlbum INTEGER REFERENCES album (idAlbum) NULL,
     hashSong char(64) NULL UNIQUE,
+    CONSTRAINT non_empty CHECK (length(strTitleNormalized) > 0 and length(strTitle) > 0),
     CONSTRAINT sha256hash CHECK (char_length(hashSong) = 64)
 );
 
