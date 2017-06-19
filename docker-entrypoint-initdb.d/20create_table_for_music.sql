@@ -4,13 +4,15 @@
 --- create table artist
 CREATE TABLE artist (
     idArtist serial PRIMARY KEY,
-    strArtist varchar(256) NOT NULL UNIQUE
+    strArtistNormalized varchar(256) NOT NULL UNIQUE,
+    strArtist text NOT NULL
 );
 
 --- create table album
 CREATE TABLE album (
     idAlbum serial PRIMARY KEY,
-    strAlbum varchar(256) NOT NULL UNIQUE
+    strAlbumNormalized varchar(256) NOT NULL UNIQUE,
+    strAlbum text NOT NULL
 );
 
 --- create table album_artist as cross reference between artist and album
@@ -24,7 +26,8 @@ CREATE TABLE album_artist (
 --- hashSong is a sha256 hash
 CREATE TABLE song (
     idSong serial PRIMARY KEY,
-    strTitle varchar(512) NOT NULL UNIQUE,
+    strTitleNormalized varchar(512) NOT NULL UNIQUE,
+    strTitle text NOT NULL,
     idAlbum INTEGER REFERENCES album (idAlbum) NULL,
     hashSong char(64) NULL UNIQUE,
     CONSTRAINT sha256hash CHECK (char_length(hashSong) = 64)
