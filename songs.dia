@@ -238,7 +238,7 @@
         <dia:point val="28.05,20.25"/>
       </dia:attribute>
       <dia:attribute name="obj_bb">
-        <dia:rectangle val="28,20.2;29.3,30.85"/>
+        <dia:rectangle val="28,20.2;29.3207,30.85"/>
       </dia:attribute>
       <dia:attribute name="orth_points">
         <dia:point val="28.05,20.25"/>
@@ -483,7 +483,7 @@
         <dia:color val="#ffffff"/>
       </dia:attribute>
       <dia:attribute name="name">
-        <dia:string>#Titel#</dia:string>
+        <dia:string>#Title#</dia:string>
       </dia:attribute>
       <dia:attribute name="key">
         <dia:boolean val="false"/>
@@ -1468,7 +1468,7 @@
         <dia:point val="5.05,20.25"/>
       </dia:attribute>
       <dia:attribute name="obj_bb">
-        <dia:rectangle val="5,20.2;6.67,27.65"/>
+        <dia:rectangle val="5,20.2;6.69071,27.65"/>
       </dia:attribute>
       <dia:attribute name="orth_points">
         <dia:point val="5.05,20.25"/>
