@@ -49,10 +49,10 @@ CREATE TABLE song_artist (
 
 --- create view songview with array of artist for a song
 CREATE VIEW songview AS
-    SELECT song.Id AS SongId, song.Title, song.Duration, song.Hash, array_agg(artist.Name) AS Artists, album.Id AS AlbumId, album.Title, album.Cover
+    SELECT song.Id AS SongId, song.Title, song.Duration, song.Hash, array_agg(artist.Name) AS Artists, album.Id AS AlbumId, album.Title AS AlbumTitle, album.Cover
     FROM song
     LEFT OUTER JOIN song_artist ON (song.Id = song_artist.SongId)
     LEFT OUTER JOIN artist ON (artist.Id = song_artist.ArtistId)
     LEFT OUTER JOIN album ON (album.Id = song.AlbumId)
-    GROUP BY song.Id, song.Title, song.Duration, song.Hash, album.Id, album.Title, album.Cover
+    GROUP BY song.Id, song.Title, song.Duration, song.Hash, album.Id, AlbumTitle, album.Cover
 ;
