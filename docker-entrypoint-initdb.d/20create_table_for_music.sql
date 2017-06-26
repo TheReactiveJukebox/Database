@@ -12,16 +12,16 @@ CREATE TABLE artist (
 --- create table album
 CREATE TABLE album (
     Id serial PRIMARY KEY,
-    TitelNormalized varchar(256) NOT NULL UNIQUE,
-    Titel text NOT NULL,
+    TitleNormalized varchar(256) NOT NULL UNIQUE,
+    Title text NOT NULL,
     Cover text NULL,
-    CONSTRAINT non_empty CHECK (length(TitelNormalized) > 0 and length(Titel) > 0)
+    CONSTRAINT non_empty CHECK (length(TitleNormalized) > 0 and length(Title) > 0)
 );
 
 --- create table album_artist as cross reference between artist and album
 CREATE TABLE album_artist (
-    ArtistId INTEGER REFERENCES artist (id) NOT NULL,
-    AlbumId INTEGER REFERENCES album (id) NOT NULL,
+    ArtistId INTEGER REFERENCES artist (Id) NOT NULL,
+    AlbumId INTEGER REFERENCES album (Id) NOT NULL,
     UNIQUE (ArtistId, AlbumId)
 );
 
@@ -31,7 +31,7 @@ CREATE TABLE song (
     Id serial PRIMARY KEY,
     TitleNormalized varchar(512) NOT NULL UNIQUE,
     Title text NOT NULL,
-    AlbumId INTEGER REFERENCES album (id) NULL,
+    AlbumId INTEGER REFERENCES album (Id) NULL,
     Hash char(64) NULL UNIQUE,
     Duration integer NOT NULL,
     CONSTRAINT non_empty CHECK (length(TitleNormalized) > 0 and length(Title) > 0),
@@ -41,18 +41,18 @@ CREATE TABLE song (
 
 --- create table song_artist as cross reference between song and artist
 CREATE TABLE song_artist (
-    SongId INTEGER REFERENCES song (id) NOT NULL,
-    ArtistId INTEGER REFERENCES artist (id) NOT NULL,
+    SongId INTEGER REFERENCES song (Id) NOT NULL,
+    ArtistId INTEGER REFERENCES artist (Id) NOT NULL,
     Featured boolean DEFAULT FALSE NOT NULL,
     UNIQUE (SongId, ArtistId)
 );
 
 --- create view songview with array of artist for a song
 CREATE VIEW songview AS
-	SELECT song.Id AS SongId, song.Title, song.Duration, song.Hash, array_agg(artist.Name) AS Artists, album.Id AS AlbumId, album.Titel, album.Cover
+    SELECT song.Id AS SongId, song.Title, song.Duration, song.Hash, array_agg(artist.Name) AS Artists, album.Id AS AlbumId, album.Title, album.Cover
     FROM song
-    LEFT OUTER JOIN song_artist ON (song.id = song_artist.SongId)
-    LEFT OUTER JOIN artist ON (artist.id = song_artist.ArtistId)
-    LEFT OUTER JOIN album ON (album.id = song.AlbumId)
-    GROUP BY song.Id, song.Title, song.Duration, song.Hash, album.Id, album.Titel, album.Cover
+    LEFT OUTER JOIN song_artist ON (song.Id = song_artist.SongId)
+    LEFT OUTER JOIN artist ON (artist.Id = song_artist.ArtistId)
+    LEFT OUTER JOIN album ON (album.Id = song.AlbumId)
+    GROUP BY song.Id, song.Title, song.Duration, song.Hash, album.Id, album.Title, album.Cover
 ;
