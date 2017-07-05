@@ -3,7 +3,7 @@
 
 --- create table users
 --- Password is a sha256 hash
-CREATE TABLE "user" (
+CREATE TABLE jukebox_user (
     Id serial PRIMARY KEY,
     Name varchar(25) NOT NULL UNIQUE,
     Password char(64) NULL,
