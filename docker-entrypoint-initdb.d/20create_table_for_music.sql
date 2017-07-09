@@ -1,3 +1,7 @@
+-- noinspection SqlDialectInspectionForFile
+
+-- noinspection SqlNoDataSourceInspectionForFile
+
 --- switch into database reactivejukebox
 \connect reactivejukebox
 
@@ -6,6 +10,8 @@ CREATE TABLE artist (
     Id serial PRIMARY KEY,
     NameNormalized varchar(256) NOT NULL UNIQUE,
     Name text NOT NULL,
+    MusicBrainzId text NULL,
+    Rating DECIMAL(2,1),
     CONSTRAINT non_empty CHECK (length(NameNormalized) > 0 and length(Name) > 0)
 );
 
@@ -15,6 +21,7 @@ CREATE TABLE album (
     TitleNormalized varchar(256) NOT NULL UNIQUE,
     Title text NOT NULL,
     Cover text NULL,
+    MusicBrainzId text NULL,
     CONSTRAINT non_empty CHECK (length(TitleNormalized) > 0 and length(Title) > 0)
 );
 
@@ -34,6 +41,10 @@ CREATE TABLE song (
     AlbumId INTEGER REFERENCES album (Id) NULL,
     Hash char(64) NULL UNIQUE,
     Duration integer NOT NULL,
+    Published DATE NULL,
+    MusicBrainzId text NULL,
+    Playcount integer NULL,
+    Listeners integer NULL,
     CONSTRAINT non_empty CHECK (length(TitleNormalized) > 0 and length(Title) > 0),
     CONSTRAINT sha256hash CHECK (char_length(Hash) = 64),
     CONSTRAINT nonnegativ_duration CHECK (Duration >= 0)
@@ -45,6 +56,19 @@ CREATE TABLE song_artist (
     ArtistId INTEGER REFERENCES artist (Id) NOT NULL,
     Featured boolean DEFAULT FALSE NOT NULL,
     UNIQUE (SongId, ArtistId)
+);
+
+--- create table genre
+CREATE TABLE genre (
+    Id serial PRIMARY KEY,
+    Name text NOT NULL
+);
+
+--- create table song_genre as cross reference between song and genre
+CREATE TABLE song_genre (
+    SongId INTEGER REFERENCES song (Id) NOT NULL,
+    GenreId INTEGER REFERENCES genre (Id) NOT NULL,
+    UNIQUE (SongId, GenreId)
 );
 
 --- create view songview with array of artist for a song
