@@ -10,7 +10,7 @@ CREATE TABLE artist (
     Id serial PRIMARY KEY,
     NameNormalized varchar(256) NOT NULL UNIQUE,
     Name text NOT NULL,
-    MusicBrainzId text NULL,
+    MusicBrainzId char(36) NULL,
     Rating DECIMAL(2,1),
     CONSTRAINT non_empty CHECK (length(NameNormalized) > 0 and length(Name) > 0)
 );
@@ -21,7 +21,7 @@ CREATE TABLE album (
     TitleNormalized varchar(256) NOT NULL UNIQUE,
     Title text NOT NULL,
     Cover text NULL,
-    MusicBrainzId text NULL,
+    MusicBrainzId char(36) NULL,
     CONSTRAINT non_empty CHECK (length(TitleNormalized) > 0 and length(Title) > 0)
 );
 
@@ -42,7 +42,7 @@ CREATE TABLE song (
     Hash char(64) NULL UNIQUE,
     Duration integer NOT NULL,
     Published DATE NULL,
-    MusicBrainzId text NULL,
+    MusicBrainzId char(36) NULL,
     Playcount integer NULL,
     Listeners integer NULL,
     CONSTRAINT non_empty CHECK (length(TitleNormalized) > 0 and length(Title) > 0),
