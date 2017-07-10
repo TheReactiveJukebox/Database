@@ -45,6 +45,7 @@ CREATE TABLE song (
     MusicBrainzId char(36) NULL,
     Playcount integer NULL,
     Listeners integer NULL,
+    Rating DECIMAL(2,1),
     CONSTRAINT non_empty CHECK (length(TitleNormalized) > 0 and length(Title) > 0),
     CONSTRAINT sha256hash CHECK (char_length(Hash) = 64),
     CONSTRAINT nonnegativ_duration CHECK (Duration >= 0)
