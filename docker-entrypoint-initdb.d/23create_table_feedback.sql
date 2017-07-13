@@ -12,8 +12,8 @@ CREATE TABLE feedback (
 --- create table feedbackreason
 CREATE TABLE feedbackreason (
     Id serial PRIMARY KEY,
-    Name text NOT NULL,
-    UNIQUE (Decription)
+    Description text NOT NULL,
+    UNIQUE (Description)
 );
 
 --- create table feedback_radiostation
