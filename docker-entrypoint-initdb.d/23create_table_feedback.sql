@@ -4,15 +4,16 @@
 --- create table feedback
 CREATE TABLE feedback (
     Id serial PRIMARY KEY,
-    Decription INTEGER REFERENCES jukebox_user (Id) NOT NULL,
-    UNIQUE (Decription)
+    UserId INTEGER REFERENCES jukebox_user (Id) NOT NULL,
+    SongId INTEGER REFERENCES song (Id) NOT NULL,
+    IsLike BOOLEAN NOT NULL
 );
 
 --- create table feedbackreason
 CREATE TABLE feedbackreason (
     Id serial PRIMARY KEY,
     Name text NOT NULL,
-    IsLike BOOLEAN NOT NULL
+    UNIQUE (Decription)
 );
 
 --- create table feedback_radiostation
