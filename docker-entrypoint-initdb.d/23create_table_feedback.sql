@@ -13,7 +13,7 @@ CREATE TABLE feedback (
     RadioId INTEGER REFERENCES radio (Id) NOT NULL,
     FeedbackSong INTEGER NOT NULL,
     FeedbackArtist INTEGER NOT NULL,
-    FeedbackTempo INTEGER NOT NULL,
+    FeedbackSpeed INTEGER NOT NULL,
     FeedbackGenre INTEGER NOT NULL,
     FeedbackDynamics INTEGER NOT NULL,
     FeedbackPeriod INTEGER NOT NULL,
