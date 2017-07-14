@@ -5,7 +5,7 @@
 CREATE TABLE radio (
     Id serial PRIMARY KEY,
     UserId INTEGER REFERENCES jukebox_user (Id) NOT NULL,
-    IsRandom BOOLEAN NOT NULL,
+    IsRandom BOOLEAN NOT NULL DEFAULT FALSE,
     AlgorithmName varchar(16) NOT NULL,
     ReferenceSongId INTEGER REFERENCES song (Id) NULL,
     CONSTRAINT non_empty CHECK (length(AlgorithmName) > 0),
