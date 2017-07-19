@@ -6,10 +6,9 @@ CREATE TABLE radio (
     Id serial PRIMARY KEY,
     UserId INTEGER REFERENCES jukebox_user (Id) NOT NULL,
     AlgorithmName varchar(16) NOT NULL,
-    StartYear INTEGER NULL,
-    EndYear INTEGER NULL,
-    CONSTRAINT non_empty CHECK (length(AlgorithmName) > 0),
-    CONSTRAINT complete_interval CHECK ((StartYear IS NULL and EndYear IS NULL) or (StartYear IS NOT NULL and EndYear IS NOT NULL))
+    StartYear INTEGER NULL CHECK (StartYear > 1000 and StartYear < 3000),
+    EndYear INTEGER NULL CHECK (EndYear > 1000 and EndYear < 3000),
+    CONSTRAINT non_empty CHECK (length(AlgorithmName) > 0)
 );
 
 CREATE TABLE radio_song (
