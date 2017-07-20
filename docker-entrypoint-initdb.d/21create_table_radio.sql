@@ -17,3 +17,9 @@ CREATE TABLE radio_song (
     Position INTEGER NULL,
     UNIQUE (RadioId, SongId)
 );
+
+CREATE TABLE radio_genre (
+    RadioId INTEGER REFERENCES radio (Id) NOT NULL,
+    GenreId INTEGER REFERENCES genre (Id) NOT NULL,
+    UNIQUE (RadioId, GenreId)
+)
