@@ -62,7 +62,8 @@ CREATE TABLE song_artist (
 --- create table genre
 CREATE TABLE genre (
     Id serial PRIMARY KEY,
-    Name text NOT NULL
+    Name text NOT NULL,
+    MetaGenreId INTEGER REFERENCES genre (Id) NULL
 );
 
 --- create table song_genre as cross reference between song and genre
