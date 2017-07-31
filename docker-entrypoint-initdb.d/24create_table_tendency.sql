@@ -14,6 +14,10 @@ CREATE TABLE tendency (
     Older BOOLEAN,
     Newer BOOLEAN,
     MoreOfGenre varchar(25),
+    PreferredDynamics FLOAT CHECK (PreferredDynamics >= 0 AND PreferredDynamics <= 1),
+    PreferredSpeed INTEGER CHECK (PreferredSpeed > 0),
+    PreferredPeriodStart INTEGER CHECK (PreferredPeriodStart < PreferredPeriodEnd),
+    PreferredPeriodEnd INTEGER CHECK (PreferredPeriodStart < PreferredPeriodEnd),
     Time TIMESTAMP (0) without time zone NOT NULL DEFAULT (now() at time zone 'utc'),
     UNIQUE (RadioId, UserId, Time)
 );
