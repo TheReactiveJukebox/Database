@@ -54,6 +54,7 @@ CREATE TABLE song (
     Acousticness REAL,
     Instrumentalness REAL,
     Liveness REAL,
+    Dynamics REAL,
     CONSTRAINT non_empty CHECK (length(TitleNormalized) > 0 and length(Title) > 0),
     CONSTRAINT sha256hash CHECK (char_length(Hash) = 64),
     CONSTRAINT nonnegativ_duration CHECK (Duration >= 0)
