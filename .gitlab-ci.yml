@@ -1,9 +1,23 @@
 stages:
+- test
 - build_image
 - test_image
 
 variables:
   IMAGE_NAME_PRO: database_pro:$CI_COMMIT_REF_SLUG
+  POSTGRES_USER: runner
+  POSTGRES_PASSWORD: ""
+
+sql:
+  stage: test
+  # https://hub.docker.com/r/orchardup/postgresql/
+  services:
+    # https://hub.docker.com/_/postgres/
+    - postgres:alpine
+  script:
+    - apk add --update postgresql-client
+    - cat docker-entrypoint-initdb.d/*.sql > test.sql
+    - psql -U runner -h postgres -W -f test.sql
 
 production:
   stage: build_image
