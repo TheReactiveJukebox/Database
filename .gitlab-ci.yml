@@ -15,7 +15,7 @@ sql:
     # https://hub.docker.com/_/postgres/
     - postgres:alpine
   script:
-    - apk add --update postgresql-client
+    - apk add postgresql-client
     - cat docker-entrypoint-initdb.d/*.sql > test.sql
     - psql -U runner -h postgres -W -f test.sql
 
