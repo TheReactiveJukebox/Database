@@ -22,4 +22,4 @@ CREATE TABLE radio_genre (
     RadioId INTEGER REFERENCES radio (Id) NOT NULL,
     GenreId INTEGER REFERENCES genre (Id) NOT NULL,
     UNIQUE (RadioId, GenreId)
-)
+);
