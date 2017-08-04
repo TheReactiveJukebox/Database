@@ -3,14 +3,14 @@ stages:
 - test
 
 variables:
-  IMAGE_NAME: database:$CI_COMMIT_REF_SLUG
+  IMAGE_NAME_PRO: database_pro:$CI_COMMIT_REF_SLUG
 
 build_image:
   stage: build
   script:
-  - docker build --pull -t $IMAGE_NAME .
+  - docker build --pull -t $IMAGE_NAME_PRO .
 
 test:
   stage: test
   script:
-  - docker run $IMAGE_NAME true
+  - docker run $IMAGE_NAME_PRO true
