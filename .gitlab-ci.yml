@@ -17,7 +17,7 @@ sql:
   script:
     - apk add postgresql-client
     - for n in docker-entrypoint-initdb.d/*;do echo "--- File $n" && cat "$n"; done | grep -v '^\\connect '> test.sql
-    - psql -U runner -h postgres -W -f test.sql
+    - psql -v ON_ERROR_STOP=1 -U runner -h postgres -W -f test.sql
   artifacts:
     paths:
     - test.sql
