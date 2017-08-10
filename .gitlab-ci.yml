@@ -23,12 +23,12 @@ sql:
     - test.sql
     expire_in: 1 week
 
-production:
+docker_image:
   stage: build_image
   script:
   - docker build --pull -t $IMAGE_NAME_PRO .
 
-test:
+database_init:
   stage: test_image
   script:
   - docker run $IMAGE_NAME_PRO true
