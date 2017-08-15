@@ -10,6 +10,8 @@ variables:
 
 sql:
   stage: test
+  # https://hub.docker.com/_/alpine/
+  image: alpine
   services:
     # https://hub.docker.com/_/postgres/
     - postgres:alpine
