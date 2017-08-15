@@ -18,6 +18,7 @@ sql:
     - for n in docker-entrypoint-initdb.d/*;do echo "--- File $n" && cat "$n"; done | grep -v '^\\connect '> test.sql
     - psql -v ON_ERROR_STOP=1 -U runner -h postgres -W -f test.sql
   artifacts:
+    name: sql_$CI_COMMIT_REF_SLUG
     paths:
     - test.sql
     expire_in: 1 week
