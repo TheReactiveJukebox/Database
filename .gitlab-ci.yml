@@ -13,8 +13,9 @@ sql:
   services:
     # https://hub.docker.com/_/postgres/
     - postgres:alpine
-  script:
+  before_script:
     - apk add --update postgresql-client
+  script:
     - for n in docker-entrypoint-initdb.d/*;do echo "--- File $n" && cat "$n"; done | grep -v '^\\connect '> test.sql
     - psql -v ON_ERROR_STOP=1 -U runner -h postgres -W -f test.sql
   artifacts:
