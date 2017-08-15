@@ -25,10 +25,12 @@ sql:
 
 docker_image:
   stage: build_image
+  dependencies: []
   script:
   - docker build --pull -t $IMAGE_NAME_PRO .
 
 database_init:
   stage: test_image
+  dependencies: []
   script:
   - docker run $IMAGE_NAME_PRO true
