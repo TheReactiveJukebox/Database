@@ -1,0 +1,39 @@
+stages:
+- test
+- build_image
+- test_image
+
+variables:
+  IMAGE_NAME_PRO: database_pro:$CI_COMMIT_REF_SLUG
+  POSTGRES_USER: runner
+  POSTGRES_PASSWORD: ""
+
+sql:
+  stage: test
+  # https://hub.docker.com/_/alpine/
+  image: alpine
+  services:
+    # https://hub.docker.com/_/postgres/
+    - postgres:alpine
+  before_script:
+    - apk add --update postgresql-client
+  script:
+    - for n in docker-entrypoint-initdb.d/*;do echo "--- File $n" && cat "$n"; done | grep -v '^\\connect '> test.sql
+    - psql -v ON_ERROR_STOP=1 -U runner -h postgres -W -f test.sql
+  artifacts:
+    name: sql_$CI_COMMIT_REF_SLUG
+    paths:
+    - test.sql
+    expire_in: 1 week
+
+docker_image:
+  stage: build_image
+  dependencies: []
+  script:
+  - docker build --pull -t $IMAGE_NAME_PRO .
+
+database_init:
+  stage: test_image
+  dependencies: []
+  script:
+  - docker run $IMAGE_NAME_PRO true
