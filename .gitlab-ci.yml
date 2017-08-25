@@ -29,18 +29,24 @@ sql:
 
 docker_image:
   stage: build_image
+  only:
+    - master
   dependencies: []
   script:
   - docker build --pull -t $IMAGE_NAME_PRO .
 
 database_init:
   stage: test_image
+  only:
+    - master
   dependencies: []
   script:
   - docker run $IMAGE_NAME_PRO true
 
 remove_image:
   stage: cleanup
+  only:
+    - master
   dependencies: []
   script:
     - docker image rm $IMAGE_NAME_PRO
