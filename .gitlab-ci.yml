@@ -49,6 +49,7 @@ remove_image:
     - master
   dependencies: []
   script:
+    - docker rm -v $(docker ps -a  | awk "/ $IMAGE_NAME_PRO /{print \$1}")
     - docker image rm $IMAGE_NAME_PRO
   when: always
   allow_failure: true
