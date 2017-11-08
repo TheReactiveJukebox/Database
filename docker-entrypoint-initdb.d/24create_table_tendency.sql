@@ -15,7 +15,6 @@ CREATE TABLE tendency (
     PeriodStartNewer BOOLEAN,
     PeriodEndOlder BOOLEAN,
     PeriodEndNewer BOOLEAN,
-    MoreOfGenre varchar(25),
     PreferredDynamics FLOAT CHECK (PreferredDynamics >= 0 AND PreferredDynamics <= 1),
     PreferredSpeed INTEGER CHECK (PreferredSpeed > 0),
     PreferredPeriodStart INTEGER,
