@@ -21,4 +21,23 @@ CREATE TABLE feedback (
     UNIQUE (SongId, UserId)
 );
 
+CREATE TABLE feedbackArtist(
+    Id serial PRIMARY KEY,
+    UserId INTEGER REFERENCES jukebox_user (Id) NOT NULL,
+    ArtistId INTEGER REFERENCES artist (Id) NOT NULL,
+    FeedbackArtist INTEGER NOT NULL CHECK (FeedbackArtist >= -1 AND FeedbackArtist <= 1),
+    Time TIMESTAMP (0) without time zone NOT NULL DEFAULT (now() at time zone 'utc'),
+    UNIQUE (ArtistId, UserId)
+
+);
+
+CREATE TABLE feedbackGenre(
+    Id serial PRIMARY KEY,
+    UserId INTEGER REFERENCES jukebox_user (Id) NOT NULL,
+    GenreId INTEGER REFERENCES genre (Id) NOT NULL,
+    FeedbackGenre INTEGER NOT NULL CHECK (FeedbackGenre >= -1 AND FeedbackGenre <= 1),
+    Time TIMESTAMP (0) without time zone NOT NULL DEFAULT (now() at time zone 'utc'),
+    UNIQUE (GenreId, UserId)
+
+);
 
