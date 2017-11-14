@@ -31,7 +31,7 @@ CREATE TABLE feedbackArtist(
 CREATE TABLE feedbackGenre(
     Id serial PRIMARY KEY,
     UserId INTEGER REFERENCES jukebox_user (Id) NOT NULL,
-    Genre text genre NOT NULL,
+    Genre text NOT NULL,
     FeedbackGenre INTEGER NOT NULL CHECK (FeedbackGenre >= -1 AND FeedbackGenre <= 1),
     Time TIMESTAMP (0) without time zone NOT NULL DEFAULT (now() at time zone 'utc'),
     UNIQUE (Genre, UserId)
