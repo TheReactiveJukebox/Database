@@ -9,6 +9,8 @@ CREATE TABLE radio (
     StartYear INTEGER NULL CHECK (StartYear > 1000 and StartYear < 3000),
     EndYear INTEGER NULL CHECK (EndYear > 1000 and EndYear < 3000),
     Speed FLOAT CHECK (Speed >= 0),
+    Arousal FLOAT CHECK (Arousal >= -1 and Arousal <= 1),
+    Valence FLOAT CHECK (Valence >= -1 and Valence <= 1),
     Dynamic FLOAT CHECK (Dynamic >= 0 and Dynamic <= 1),
     CONSTRAINT non_empty CHECK (length(AlgorithmName) > 0)
 );
