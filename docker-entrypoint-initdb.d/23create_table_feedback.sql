@@ -36,3 +36,11 @@ CREATE TABLE feedbackGenre(
     UNIQUE (Genre, UserId)
 );
 
+CREATE TABLE feedbackAlbum(
+    Id serial PRIMARY KEY,
+    UserId INTEGER REFERENCES jukebox_user (Id) NOT NULL,
+    AlbumId INTEGER REFERENCES album (Id) NOT NULL,
+    FeedbackAlbum INTEGER NOT NULL CHECK (FeedbackAlbum >= -1 AND FeedbackAlbum <= 1),
+    Time TIMESTAMP (0) without time zone NOT NULL DEFAULT (now() at time zone 'utc'),
+    UNIQUE (AlbumId, UserId)
+);
