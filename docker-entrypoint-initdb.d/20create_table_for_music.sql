@@ -58,6 +58,8 @@ CREATE TABLE song (
     Dynamics REAL,
     SpotifyUrl CHAR(107) NULL,
     SpotifyId CHAR(22) NOT NULL,
+    MirArousal REAL,
+    MirValence REAL,
     CONSTRAINT non_empty CHECK (length(TitleNormalized) > 0 and length(Title) > 0),
     CONSTRAINT sha256hash CHECK (char_length(Hash) = 64),
     CONSTRAINT nonnegativ_duration CHECK (Duration >= 0)
