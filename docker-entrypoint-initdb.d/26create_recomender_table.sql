@@ -6,6 +6,6 @@ CREATE TABLE feature_distance
 (
     track_from INT NOT NULL,
     track_to INT NOT NULL,
-    distance DOUBLE(22,19) NOT NULL,
+    distance DOUBLE PRECISION NOT NULL,
     CONSTRAINT feature_distance_pk PRIMARY KEY (track_from, track_to)
 );
