@@ -80,6 +80,14 @@ CREATE TABLE genre (
     MetaGenreId INTEGER REFERENCES genre (Id) NULL
 );
 
+--- create table for similarity of genres
+CREATE TABLE genresimilarity (
+    GenreId1 INTEGER REFERENCES genre (Id) NOT NULL,
+    GenreId2 INTEGER REFERENCES genre (Id) NOT NULL,
+    Similarity FLOAT CHECK (Similarity >= 0)
+    UNIQUE (GenreId1, GenreId2)
+);
+
 --- create table song_genre as cross reference between song and genre
 CREATE TABLE song_genre (
     SongId INTEGER REFERENCES song (Id) NOT NULL,
