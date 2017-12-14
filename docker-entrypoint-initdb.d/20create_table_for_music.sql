@@ -8,7 +8,7 @@
 --- create table artist
 CREATE TABLE artist (
     Id serial PRIMARY KEY,
-    NameNormalized varchar(256) NOT NULL,
+    NameNormalized varchar(256) NOT NULL UNIQUE,
     Name text NOT NULL,
     MusicBrainzId char(36) NULL,
     Rating DECIMAL(2,1),
@@ -18,7 +18,7 @@ CREATE TABLE artist (
 --- create table album
 CREATE TABLE album (
     Id serial PRIMARY KEY,
-    TitleNormalized varchar(256) NOT NULL,
+    TitleNormalized varchar(256) NOT NULL UNIQUE,
     Title text NOT NULL,
     Cover text NULL,
     MusicBrainzId char(36) NULL,
