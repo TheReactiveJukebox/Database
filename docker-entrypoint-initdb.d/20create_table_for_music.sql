@@ -84,7 +84,7 @@ CREATE TABLE genre (
 CREATE TABLE genresimilarity (
     GenreId1 INTEGER REFERENCES genre (Id) NOT NULL,
     GenreId2 INTEGER REFERENCES genre (Id) NOT NULL,
-    Similarity FLOAT CHECK (Similarity >= 0)
+    Similarity FLOAT CHECK (Similarity >= 0),
     UNIQUE (GenreId1, GenreId2)
 );
 
