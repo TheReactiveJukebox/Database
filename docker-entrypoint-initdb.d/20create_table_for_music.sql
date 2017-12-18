@@ -36,7 +36,7 @@ CREATE TABLE album_artist (
 --- hashSong is a sha256 hash
 CREATE TABLE song (
     Id serial PRIMARY KEY,
-    TitleNormalized VARCHAR(512) NOT NULL UNIQUE,
+    TitleNormalized VARCHAR(512) NOT NULL,
     Title text NOT NULL,
     AlbumId INTEGER REFERENCES album (Id) NULL,
     Hash CHAR(64) NULL UNIQUE,
@@ -56,6 +56,10 @@ CREATE TABLE song (
     Liveness REAL,
     Valence REAL,
     Dynamics REAL,
+    SpotifyUrl CHAR(107) NULL,
+    SpotifyId CHAR(22) NOT NULL,
+    MirArousal REAL,
+    MirValence REAL,
     CONSTRAINT non_empty CHECK (length(TitleNormalized) > 0 and length(Title) > 0),
     CONSTRAINT sha256hash CHECK (char_length(Hash) = 64),
     CONSTRAINT nonnegativ_duration CHECK (Duration >= 0)
