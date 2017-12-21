@@ -2,6 +2,7 @@ stages:
 - test
 - build_image
 - test_image
+- cleanup
 
 variables:
   IMAGE_NAME_PRO: database_pro:$CI_COMMIT_REF_SLUG
@@ -28,12 +29,27 @@ sql:
 
 docker_image:
   stage: build_image
+  only:
+    - master
   dependencies: []
   script:
   - docker build --pull -t $IMAGE_NAME_PRO .
 
 database_init:
   stage: test_image
+  only:
+    - master
   dependencies: []
   script:
   - docker run $IMAGE_NAME_PRO true
+
+remove_image:
+  stage: cleanup
+  only:
+    - master
+  dependencies: []
+  script:
+    - docker rm -v $(docker ps -a  | awk "/ $IMAGE_NAME_PRO /{print \$1}")
+    - docker image rm $IMAGE_NAME_PRO
+  when: always
+  allow_failure: true
