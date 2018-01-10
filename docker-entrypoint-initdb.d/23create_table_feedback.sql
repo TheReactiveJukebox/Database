@@ -11,9 +11,6 @@ CREATE TABLE feedback (
     UserId INTEGER REFERENCES jukebox_user (Id) NOT NULL,
     SongId INTEGER REFERENCES song (Id) NOT NULL,
     FeedbackSong INTEGER NOT NULL CHECK (FeedbackSong >= -1 AND FeedbackSong <= 1),
-    FeedbackSpeed INTEGER NOT NULL CHECK (FeedbackSpeed >= -1 AND FeedbackSpeed <= 1),
-    FeedbackDynamics INTEGER NOT NULL CHECK (FeedbackDynamics >= -1 AND FeedbackDynamics <= 1),
-    FeedbackMood INTEGER NOT NULL CHECK (FeedbackMood >= -1 AND FeedbackMood <= 1),
     Time TIMESTAMP (0) without time zone NOT NULL DEFAULT (now() at time zone 'utc'),
     UNIQUE (SongId, UserId)
 );
