@@ -57,7 +57,7 @@ CREATE TABLE feedbackSpeed(
 CREATE TABLE feedbackMood(
     Id serial PRIMARY KEY,
     UserId INTEGER REFERENCES jukebox_user (Id) NOT NULL,
-    Mood REAL NOT NULL,
+    Mood INTEGER NOT NULL,
     FeedbackMood INTEGER NOT NULL CHECK (FeedbackMood >= -1 AND FeedbackMood <= 1),
     Time TIMESTAMP (0) without time zone NOT NULL DEFAULT (now() at time zone 'utc'),
     UNIQUE (Mood, UserId)
