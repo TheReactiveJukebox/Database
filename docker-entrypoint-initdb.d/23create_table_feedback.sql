@@ -11,9 +11,6 @@ CREATE TABLE feedback (
     UserId INTEGER REFERENCES jukebox_user (Id) NOT NULL,
     SongId INTEGER REFERENCES song (Id) NOT NULL,
     FeedbackSong INTEGER NOT NULL CHECK (FeedbackSong >= -1 AND FeedbackSong <= 1),
-    FeedbackSpeed INTEGER NOT NULL CHECK (FeedbackSpeed >= -1 AND FeedbackSpeed <= 1),
-    FeedbackDynamics INTEGER NOT NULL CHECK (FeedbackDynamics >= -1 AND FeedbackDynamics <= 1),
-    FeedbackMood INTEGER NOT NULL CHECK (FeedbackMood >= -1 AND FeedbackMood <= 1),
     Time TIMESTAMP (0) without time zone NOT NULL DEFAULT (now() at time zone 'utc'),
     UNIQUE (SongId, UserId)
 );
@@ -43,4 +40,22 @@ CREATE TABLE feedbackAlbum(
     FeedbackAlbum INTEGER NOT NULL CHECK (FeedbackAlbum >= -1 AND FeedbackAlbum <= 1),
     Time TIMESTAMP (0) without time zone NOT NULL DEFAULT (now() at time zone 'utc'),
     UNIQUE (AlbumId, UserId)
+);
+
+CREATE TABLE feedbackSpeed(
+    Id serial PRIMARY KEY,
+    UserId INTEGER REFERENCES jukebox_user (Id) NOT NULL,
+    fSpeed INTEGER NOT NULL,
+    FeedbackSpeed INTEGER NOT NULL CHECK (FeedbackSpeed >= -1 AND FeedbackSpeed <= 1),
+    Time TIMESTAMP (0) without time zone NOT NULL DEFAULT (now() at time zone 'utc'),
+    UNIQUE (fSpeed, UserId)
+);
+
+CREATE TABLE feedbackMood(
+    Id serial PRIMARY KEY,
+    UserId INTEGER REFERENCES jukebox_user (Id) NOT NULL,
+    fMood INTEGER NOT NULL,
+    FeedbackMood INTEGER NOT NULL CHECK (FeedbackMood >= -1 AND FeedbackMood <= 1),
+    Time TIMESTAMP (0) without time zone NOT NULL DEFAULT (now() at time zone 'utc'),
+    UNIQUE (fMood, UserId)
 );
