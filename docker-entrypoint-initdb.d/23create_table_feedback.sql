@@ -45,17 +45,17 @@ CREATE TABLE feedbackAlbum(
 CREATE TABLE feedbackSpeed(
     Id serial PRIMARY KEY,
     UserId INTEGER REFERENCES jukebox_user (Id) NOT NULL,
-    Speed INTEGER NOT NULL,
+    fSpeed INTEGER NOT NULL,
     FeedbackSpeed INTEGER NOT NULL CHECK (FeedbackSpeed >= -1 AND FeedbackSpeed <= 1),
     Time TIMESTAMP (0) without time zone NOT NULL DEFAULT (now() at time zone 'utc'),
-    UNIQUE (Speed, UserId)
+    UNIQUE (fSpeed, UserId)
 );
 
 CREATE TABLE feedbackMood(
     Id serial PRIMARY KEY,
     UserId INTEGER REFERENCES jukebox_user (Id) NOT NULL,
-    Mood INTEGER NOT NULL,
+    fMood INTEGER NOT NULL,
     FeedbackMood INTEGER NOT NULL CHECK (FeedbackMood >= -1 AND FeedbackMood <= 1),
     Time TIMESTAMP (0) without time zone NOT NULL DEFAULT (now() at time zone 'utc'),
-    UNIQUE (Mood, UserId)
+    UNIQUE (fMood, UserId)
 );
